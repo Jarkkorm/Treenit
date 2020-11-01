@@ -1,2 +1,0 @@
-# Treenit
-Treenipäiväkirja
