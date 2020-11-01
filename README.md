@@ -1,7 +1,7 @@
 # Treenipäiväkirja
 
 Sovelluksessa voi luoda itselleen treenisuunnitelman tai valita jo olemassa
-olevista.
+olevista suunnitelmista.
 Suunnitelmaa voi muokata ja tehdyt treenit voi merkitä tehdyiksi.
 Omaa edistymistä voi seurata.
 Käyttäjä voi olla peruskäyttäjä tai ylläpitäjä.
