@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, request, redirect
-import plan, users
+import plan, users, exercise
 
 @app.route("/")
 def index():
@@ -15,7 +15,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if users.login(username,password):
-            return redirect("/")
+            return redirect("/plan")
         else:
             return render_template("error.html",message="Väärä tunnus tai salasana")
 
@@ -38,12 +38,14 @@ def register():
 
 @app.route("/newplan")
 def new():
-    return render_template("addplan.html")
+    list = exercise.get_list()
+    return render_template("addplan.html", exercises=list)
 
 @app.route("/addplan", methods=["post"])
 def addplan():
-    content = request.form["description"]
-    if plan.new_plan(content):
+    name = request.form["name"]
+    duration = request.form["duration"]
+    if plan.new_plan(name, duration):
         return redirect("/plan")
     else:
         return render_template("error.html",message="Suunnitelman luominen ei onnistunut")
@@ -51,4 +53,4 @@ def addplan():
 @app.route('/plan')
 def show():
     list = plan.get_list()
-    return render_template("plan.html", plan=list)
+    return render_template("plan.html", plans=list)

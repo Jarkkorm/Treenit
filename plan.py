@@ -1,17 +1,18 @@
 from db import db
-import users
+import users, exercise
 
 def get_list():
-	sql = "SELECT E.description FROM excercise_plan E, users U " \
-		"WHERE E.user_id=U.id "
-	result = db.session.execute(sql)
+	user_id = users.user_id()
+	sql = "SELECT P.name, P.duration FROM plan P, users U " \
+		"WHERE P.user_id=U.id AND U.id=:user_id"
+	result = db.session.execute(sql, {"user_id":user_id})
 	return result.fetchall()
 
-def new_plan(description):
+def new_plan(name, duration):
     user_id = users.user_id()
     if user_id == 0:
         return False
-    sql = "INSERT INTO excercise_plan (description, user_id) VALUES (:description, :user_id)"
-    db.session.execute(sql, {"description":description, "user_id":user_id})
+    sql = "INSERT INTO plan (name, duration, user_id) VALUES (:name, :duration, :user_id)"
+    db.session.execute(sql, {"name":name, "duration":duration, "user_id":user_id})
     db.session.commit()
     return True
