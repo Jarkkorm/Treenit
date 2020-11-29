@@ -37,15 +37,29 @@ def register():
             return render_template("error.html",message="Rekisteröinti ei onnistunut")
 
 @app.route("/newplan")
-def new():
+def newplan():
     list = exercise.get_list()
     return render_template("addplan.html", exercises=list)
+
+@app.route("/newexercise")
+def newexercise():
+    list = exercise.get_list()
+    return render_template("addexercise.html", exercises=list)
 
 @app.route("/addplan", methods=["post"])
 def addplan():
     name = request.form["name"]
     duration = request.form["duration"]
     if plan.new_plan(name, duration):
+        return redirect("/plan")
+    else:
+        return render_template("error.html",message="Suunnitelman luominen ei onnistunut")
+
+@app.route("/addexercise", methods=["post"])
+def addexercise():
+    name = request.form["name"]
+    description = request.form["description"]
+    if exercise.new_exercise(name, description):
         return redirect("/plan")
     else:
         return render_template("error.html",message="Suunnitelman luominen ei onnistunut")

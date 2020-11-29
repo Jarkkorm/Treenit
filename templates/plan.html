@@ -1,13 +1,47 @@
-<h1>Treenit treenipäiväkirjaohjelma</h1>
-<hr>
-{% for plan in plans %}
-<i>Suunnitelma:</i> {{ plan.name }}, <i>kesto:</i> {{ plan.duration }} viikkoa
-<hr>
-{% endfor %}
-
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
 {% if session.user_id %}
-Olet kirjautunut sisään.
-<a href="/newplan">Luo uusi suunnitelma</a> | <a href="/logout">Kirjaudu ulos</a>
+<hr>
+<h2>{{ title }}</h2>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Kierroksia</th>
+        <th scope="col">Toistoja</th>
+        <th scope="col">Painot/Aika</th>
+        <th scope="col">Harjoite</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for routine in routines %}
+    <tr> 
+        <td>{{ routine.sets }}</td> 
+        <td>{{ routine.reps }}</td>
+        <td>{{ routine.quantity }}</td>
+        <td>{{ routine.name }}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<form action="/plan/{{id}}" method="POST">
+    <p>Lisää uusi harjoite <br>
+    kierroksia: <input type="int" name="sets"><br>
+    Toistoja: <input type="int" name="reps"><br>
+    Painot/aika: <input type="text" name="quantity">
+    <br>
+    Liike:
+    <select name="exercise">
+        {% for exercise in exercises %}
+        <option value={{exercise.id}}>{{exercise.name}}</option>
+        {% endfor %}
+    </select><br>
+    <input type="submit" value="Lähetä">
+    <input type="hidden" name="id" value="{{ id }}">
+</form>
 {% else %}
-<a href="/login">Kirjaudu sisään</a>
+<p>Et ole kirjautunut sisään</p>
 {% endif %}
+
+{% endblock %}

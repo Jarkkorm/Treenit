@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Etusivu{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<hr>
+{% for plan in plans %}
+<i>Suunnitelma:</i> <a href="plan/{{ plan[0] }} "> {{ plan.name }} </a>, <i>kesto:</i> {{ plan.duration }} viikkoa
+<hr>
+{% endfor %}
+<a href="/newexercise">Luo uusi treeni</a> | <a href="/newplan">Luo uusi suunnitelma</a> | <a href="/logout">Kirjaudu ulos</a>
+{% else %}
+<p>Et ole kirjautunut sisään</p>
+{% endif %}
+{% endblock %}
