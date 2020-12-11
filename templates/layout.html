@@ -1,26 +1,39 @@
 <!doctype html>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<title>Treenit treenipäiväkirjaohjelma - {% block title %}{% endblock %}</title>
-<div class="container">
-    <nav class="navbar navbar-expand-sm navbar-light">
-        <a class="navbar-brand" href="/">Treenit treenipäiväkirjaohjelma</a>
-        <ul class="navbar-nav">
+<title>Treenit - {% block title %}{% endblock %}</title>
+<link href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">Treenit</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="/plan">Suunnitelmat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Harjoitteet</a>
+            <a class="nav-link" href="/exercise">Harjoitteet</a>
           </li>
+          {% if 'user_id' not in session %}
+          <li class="nav-item"></li>
+            <a class="nav-link" href="/login">Kirjaudu sisään</a>
+          </li>
+          {% endif %}
+          {% if session.user_id %}
+          <li class="nav-item"></li>
+            <a class="nav-link" href="/logout">Kirjaudu ulos</a>
+          </li>
+          {% endif %}
         </ul>
+      </div>
       </nav>
-  <div class="row">
-    <div class="col-8">
+  </header>
+  <main role="main" class="container">
         <br>
         {% block content %}{% endblock %}
-    </div>
-    <div class="col-4">
-      <p>
-    </div>
-  </div>
-</div>
+  </main>
+</body>
+</html>

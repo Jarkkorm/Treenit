@@ -1,20 +1,16 @@
 {% extends "layout.html" %}
-{% block title %}Uusi suunnitelma{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Lisää suunnitelma{% endblock %}
 {% block content %}
 {% if session.user_id %}
-<form action="/addplan" method="post">
-    Suunnitelman nimi <br>
-    <textarea name="name" rows="1" cols="40"></textarea>
-    <br>
-    Suunnitelman pituus viikoissa<br>
-    <select name="duration">
-    {% for i in range(1,12) %}
-    <option value={{i}}>{{i}}</option>
-    {% endfor %}
-    </select>
-    <br>
-    <input type="submit" value="Lähetä">
-</form>
+<h2>Lisää suunnitelma</h2>
+<div class="container">
+    <form method="POST">
+        <hr>
+        {{ wtf.quick_form(form) }}
+        <hr>
+    </form>
+</div>
 {% else %}
     <p>Et ole kirjautunut sisään</p>
 {% endif %}

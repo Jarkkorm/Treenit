@@ -1,19 +1,16 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Lisää harjoite{% endblock %}
 {% block content %}
 {% if session.user_id %}
-<form action="/addexercise" method="post">
-    Treenin nimi <br>
-    <textarea name="name" rows="1" cols="40"></textarea>
-    <br>
-    Treenin kuvaus <br>
-    <textarea name="description" rows="4" cols="40"></textarea>
-    <br>
-    </select>
-
-    <br>
-    <input type="submit" value="Lähetä">
-</form>
+<h2>Lisää harjoite</h2>
+<div class="container">
+    <form method="POST">
+        <hr>
+        {{ wtf.quick_form(form) }}
+        <hr>
+    </form>
+</div>
 {% else %}
     <p>Et ole kirjautunut sisään</p>
 {% endif %}

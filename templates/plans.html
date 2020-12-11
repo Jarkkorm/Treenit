@@ -4,10 +4,10 @@
 {% if session.user_id %}
 <hr>
 {% for plan in plans %}
-<i>Suunnitelma:</i> <a href="plan/{{ plan[0] }} "> {{ plan.name }} </a>, <i>kesto:</i> {{ plan.duration }} viikkoa
+<i>Suunnitelma:</i> <a href="plan/{{ plan[0] }} "> {{ plan.name }} </a>, <i>kesto:</i> {{ plan.duration }}
 <hr>
 {% endfor %}
-<a href="/newexercise">Luo uusi treeni</a> | <a href="/newplan">Luo uusi suunnitelma</a> | <a href="/logout">Kirjaudu ulos</a>
+<a href="/newexercise">Luo uusi treeni</a> | <a href="/newplan">Luo uusi suunnitelma</a>
 {% else %}
 <p>Et ole kirjautunut sisään</p>
 {% endif %}

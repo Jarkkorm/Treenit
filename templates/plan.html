@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
 {% if session.user_id %}
-<hr>
 <h2>{{ title }}</h2>
-<br>
+<hr>
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -25,21 +25,13 @@
 {% endfor %}
     </tbody>
 </table>
-<form action="/plan/{{id}}" method="POST">
-    <p>Lisää uusi harjoite <br>
-    kierroksia: <input type="int" name="sets"><br>
-    Toistoja: <input type="int" name="reps"><br>
-    Painot/aika: <input type="text" name="quantity">
-    <br>
-    Liike:
-    <select name="exercise">
-        {% for exercise in exercises %}
-        <option value={{exercise.id}}>{{exercise.name}}</option>
-        {% endfor %}
-    </select><br>
-    <input type="submit" value="Lähetä">
-    <input type="hidden" name="id" value="{{ id }}">
-</form>
+<div class="container">
+    <form method="POST">
+        <hr>
+        {{ wtf.quick_form(form) }}
+        <hr>
+    </form>
+</div>
 {% else %}
 <p>Et ole kirjautunut sisään</p>
 {% endif %}

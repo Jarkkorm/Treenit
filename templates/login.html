@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Kirjaudu sisään{% endblock %}
 {% block content %}
-<form action="/login" method="post">
-Tunnus: <input type="text" name="username">
-<p>
-Salasana: <input type="password" name="password">
-<p>
-<input type="submit" value="Kirjaudu">
-</form>
+<div class="container">
+    <h3>Kirjaudu sisään</h3>
+        <hr>
+        {{ wtf.quick_form(form, button_map={'submit': 'dark'}) }}
+        <hr>
+</div>
 Voit luoda tunnuksen <a href="/register">tästä</a>
 {% endblock %}
