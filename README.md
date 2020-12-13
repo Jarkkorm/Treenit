@@ -1,15 +1,6 @@
 # Treenipäiväkirja
 
-Sovelluksessa voi luoda itselleen treenisuunnitelman joka koostuu suunnitelluista harjoitteista.
-Suunnitelmaa voi muokata ja tehdyt harjoitteet voi merkitä tehdyiksi. Omaa edistymistä voi seurata.
-Käyttäjä voi olla peruskäyttäjä tai ylläpitäjä.
-Ylläpitäjä voi luoda, poistaa ja muokata valmiita treeniohjelmia.
+Sovellukseen pitää luoda tunnukset joilla pääsee kirjautumaan ja luomaan itselleen suunnitelmia.
+Suunnitelmalla on nimi ja kesto. Näytä napilla päästään näkemään suunnitelman sisältö. Suunnitelmaan voidaan lisätä harjoitteita ja se voidaan merkitä tehdyksi. Tehtyjä harjoitteita voidaan seurata historiassa.
 
 Sovellus löytyy täältä: https://treenipaivakirja.herokuapp.com/
-
-### Valmiit toiminnot
-- Rekisteröityminen, voi luoda käyttätunnuksen ja salasanan. Salasana tallennetaan tietokantaan salattuna.
-- Kirjautuminen, luoduilla tunnuksilla voi kirjautua sisään.
-- Suunnitelman voi luoda, antaa sille nimen ja keston.
-- Luodut suunnitelmat näkyvät listana.
-
