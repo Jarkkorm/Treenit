@@ -12,18 +12,21 @@ class LoginForm(FlaskForm):
   submit = SubmitField("Kirjaudu")
 
 class AddRoutineForm(FlaskForm):
-  sets = IntegerField("Kierroksia", [validators.DataRequired(), validators.Length(min=4, max=25)])
-  reps = IntegerField("Toistoja", [validators.DataRequired(), validators.Length(min=4, max=25)])
-  quantity = StringField("Painot/aika", [validators.DataRequired(), validators.Length(min=4, max=25)])
+  sets = IntegerField("Kierroksia", [validators.InputRequired(), validators.NumberRange(0,1000)])
+  reps = IntegerField("Toistoja", [validators.InputRequired(), validators.NumberRange(0,1000)])
+  quantity = StringField("Painot/aika", [validators.DataRequired(), validators.Length(min=2, max=25)])
   exercise = SelectField("Liike", coerce=int)
   submit = SubmitField("Tallenna")
 
 class AddExerciseForm(FlaskForm):
-  exercise = StringField("Treenin nimi", [validators.DataRequired(), validators.Length(min=4, max=25)])
+  name = StringField("Treenin nimi", [validators.DataRequired(), validators.Length(min=4, max=25)])
   description = StringField("Treenin kuvaus", [validators.DataRequired(), validators.Length(min=4, max=25)])
   submit = SubmitField("Tallenna")
 
 class AddPlanForm(FlaskForm):
   name = StringField("Suunnitelman nimi", [validators.DataRequired(), validators.Length(min=4, max=25)])
-  duration = IntegerField("Pituus", [validators.DataRequired(), validators.Length(min=4, max=25)])
+  duration = StringField("Pituus", [validators.DataRequired(), validators.Length(min=4, max=25)])
   submit = SubmitField("Tallenna")
+
+class AddToHistoryForm(FlaskForm):
+  submit = SubmitField("Merkitse tehdyksi")

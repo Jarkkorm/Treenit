@@ -18,9 +18,7 @@
         <tr> 
             <td>{{ plan.name }}</td> 
             <td>{{ plan.duration }}</td>
-            <td><a class="btn btn-light" role="button" href="plan/{{ plan.id }} ">Näytä</a>
-                {{ wtf.quick_form(form, id="{{plan.id}}", button_map={'submit': 'dark'}) }}
-            </td>
+            <td><a class="btn btn-light" role="button" href="plan/{{ plan.id }} ">Näytä</a></td>
         </tr>
         {% endfor %}
     </tbody>

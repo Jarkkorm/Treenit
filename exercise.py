@@ -3,7 +3,7 @@ import users
 
 def get_list():
 	user_id = users.user_id()
-	sql = "SELECT E.id, E.name FROM exercise E"
+	sql = "SELECT E.id, E.name, E.description FROM exercise E"
 	result = db.session.execute(sql)
 	return result.fetchall()
 
