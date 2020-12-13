@@ -5,11 +5,9 @@
 {% if session.user_id %}
 <h2>Lisää harjoite</h2>
 <div class="container">
-    <form method="POST">
         <hr>
-        {{ wtf.quick_form(form) }}
+        {{ wtf.quick_form(form, button_map={'submit': 'dark'}) }}
         <hr>
-    </form>
 </div>
 {% else %}
     <p>Et ole kirjautunut sisään</p>

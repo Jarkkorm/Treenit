@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Historia{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<h2>Historia</h2>
+<hr>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Aika</th>
+        <th scope="col">Selite</th>
+        <th scope="col">Nimi</th>
+        <th scope="col">Selite</th>
+        <th scope="col">Nimi</th>
+        <th scope="col">Selite</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for history in histories %}
+    <tr> 
+        <td>{{ history.date }}</td> 
+        <td>{{ history.planname }}</td> 
+        <td>{{ history.name }}</td>
+        <td>{{ history.reps }}</td> 
+        <td>{{ history.sets }}</td> 
+        <td>{{ history.quantity }}</td> 
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Et ole kirjautunut sisään</p>
+{% endif %}
+
+{% endblock %}

@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block title %}Virhe{% endblock %}
 {% block content %}
-Virhe: {{ message }}
+<div class="alert alert-warning" role="alert">
+    Virhe: {{ message }}
+</div>
 {% endblock %}

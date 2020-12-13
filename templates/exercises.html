@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Harjoitteet{% endblock %}
+{% block content %}
+{% if session.user_id %}
+<h2>Harjoitteet</h2>
+<hr>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nimi</th>
+        <th scope="col">Selite</th>   
+      </tr>
+    </thead>
+    <tbody>
+{% for exercise in exercises %}
+    <tr> 
+        <td>{{ exercise.name }}</td> 
+        <td>{{ exercise.description }}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<hr>
+<p>Luo uusi liike</p>
+<div class="container">
+        {{ wtf.quick_form(form, button_map={'submit': 'dark'}) }}
+</div>
+{% else %}
+<p>Et ole kirjautunut sisään</p>
+{% endif %}
+{% endblock %}

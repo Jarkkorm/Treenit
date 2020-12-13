@@ -12,6 +12,7 @@
         <th scope="col">Toistoja</th>
         <th scope="col">Painot/Aika</th>
         <th scope="col">Harjoite</th>
+        <th scope="col"></th>        
       </tr>
     </thead>
     <tbody>
@@ -25,15 +26,15 @@
 {% endfor %}
     </tbody>
 </table>
-<div class="container">
-    <form method="POST">
-        <hr>
-        {{ wtf.quick_form(form) }}
-        <hr>
-    </form>
+<div class="container"></div>
+<table
+<tr>
+    <td> <a class="btn btn-dark" role="button" href="/addroutine/{{id}}">Lisää uusi liike</a></td> 
+    <td> {{ wtf.quick_form(form, button_map={'submit': 'dark'}) }}</td>
+</tr>
+</table>
 </div>
 {% else %}
 <p>Et ole kirjautunut sisään</p>
 {% endif %}
-
 {% endblock %}

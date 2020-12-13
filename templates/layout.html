@@ -15,11 +15,17 @@
             <a class="nav-link" href="/plan">Suunnitelmat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/exercise">Harjoitteet</a>
+            <a class="nav-link" href="/exercises">Harjoitteet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/history">Historia</a>
           </li>
           {% if 'user_id' not in session %}
           <li class="nav-item"></li>
-            <a class="nav-link" href="/login">Kirjaudu sisään</a>
+            <a class="nav-link" href="/">Kirjaudu sisään</a>
+          </li>
+          <li class="nav-item"></li>
+            <a class="nav-link" href="/register">Luo tunnukset</a>
           </li>
           {% endif %}
           {% if session.user_id %}

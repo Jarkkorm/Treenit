@@ -1,14 +1,34 @@
 {% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}Etusivu{% endblock %}
 {% block content %}
 {% if session.user_id %}
+<h2>Suunnitelmat</h2>
 <hr>
-{% for plan in plans %}
-<i>Suunnitelma:</i> <a href="plan/{{ plan[0] }} "> {{ plan.name }} </a>, <i>kesto:</i> {{ plan.duration }}
-<hr>
-{% endfor %}
-<a href="/newexercise">Luo uusi treeni</a> | <a href="/newplan">Luo uusi suunnitelma</a>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Suunnitelma</th>
+        <th scope="col">Kesto</th>
+        <th scope="col"></th>  
+      </tr>
+    </thead>
+    <tbody>
+        {% for plan in plans %}
+        <tr> 
+            <td>{{ plan.name }}</td> 
+            <td>{{ plan.duration }}</td>
+            <td><a class="btn btn-light" role="button" href="plan/{{ plan.id }} ">Näytä</a>
+                {{ wtf.quick_form(form, id="{{plan.id}}", button_map={'submit': 'dark'}) }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <a class="btn btn-dark" role="button" href="/addplan">Luo uusi suunnitelma</a>
 {% else %}
 <p>Et ole kirjautunut sisään</p>
+<br>
+
 {% endif %}
 {% endblock %}
