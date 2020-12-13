@@ -1,7 +1,7 @@
 from app import app
 from db import db
 from flask import render_template, url_for, request, redirect, flash
-from forms import RegistrationForm, LoginForm, AddExerciseForm, AddRoutineForm, AddToHistoryForm, AddPlanForm, DeletePlanForm
+from forms import RegistrationForm, LoginForm, AddExerciseForm, AddRoutineForm, AddToHistoryForm, AddPlanForm
 import plan, users, exercise, routine, forms, plan, history
 
 @app.route('/', methods=["GET","POST"])
